@@ -173,17 +173,14 @@ function formatearFechaDiaSemana(fechaStr) {
 
 function renderRacha() {
   const racha = calcularRacha();
-  numeroRacha.textContent = racha;
+  numeroRacha.textContent = racha === 1 ? '1 día' : `${racha} días`;
   renderMejorRacha();
   renderMinutosSemana();
 }
 
 function renderMejorRacha() {
   const { cantidad } = calcularMejorRacha();
-  numeroMejorRacha.textContent = cantidad;
-  
-  const etiqueta = document.getElementById('texto-mejor-racha');
-  etiqueta.textContent = cantidad === 1 ? 'día 🏆' : 'días 🏆';
+  numeroMejorRacha.textContent = cantidad === 1 ? '1 día' : `${cantidad} días`;
 }
 
 function escapeHtml(texto) {
