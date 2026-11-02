@@ -179,16 +179,11 @@ function renderRacha() {
 }
 
 function renderMejorRacha() {
-  const { cantidad, fechaInicio } = calcularMejorRacha();
+  const { cantidad } = calcularMejorRacha();
   numeroMejorRacha.textContent = cantidad;
-
-  const fechaEl = document.getElementById('texto-mejor-racha-fecha');
-  if (cantidad === 0 || !fechaInicio) {
-    fechaEl.textContent = '';
-    return;
-  }
-
-  fechaEl.textContent = formatearFechaDiaSemana(fechaInicio);
+  
+  const etiqueta = document.getElementById('texto-mejor-racha');
+  etiqueta.textContent = cantidad === 1 ? 'día 🏆' : 'días 🏆';
 }
 
 function escapeHtml(texto) {
@@ -219,7 +214,7 @@ function renderLista() {
     li.className = 'sesion';
     li.innerHTML = `
       <div class="datos">
-        <div class="fecha">${s.fecha}</div>
+        <div class="fecha">${formatearFechaDiaSemana(s.fecha)}</div>
         <div class="tema">${escapeHtml(s.tema)}</div>
         <div class="minutos">${s.minutos} min</div>
       </div>
