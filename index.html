@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Diario de Estudio</h1>
+    </header>
+
+    <section class="card racha">
+      <h2>Racha actual</h2>
+      <div class="valor-racha"><span id="numero-racha">0</span> <span>🔥</span></div>
+      <p id="texto-racha">Días seguidos estudiando</p>
+      <div class="valor-racha mejor-racha"><span id="numero-mejor-racha">0</span> <span>🏆</span></div>
+      <p id="texto-mejor-racha">Tu mejor racha histórica</p>
+      <p id="texto-mejor-racha-fecha"></p>
+    </section>
+
+    <section class="card minutos-semana">
+      <h2>Esta semana</h2>
+      <div class="valor-minutos-semana"><span id="minutos-semana">0h 0m</span></div>
+      <p id="texto-minutos-semana">Horas estudiadas esta semana</p>
+    </section>
+
+    <section class="card">
+      <h2>Registrar sesión</h2>
+      <form id="form-sesion">
+        <div class="campo">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+        <div class="campo">
+          <label for="tema">Tema</label>
+          <input type="text" id="tema" name="tema" placeholder="Ej: JavaScript, CSS..." required>
+        </div>
+        <div class="campo">
+          <label for="minutos">Minutos</label>
+          <input type="number" id="minutos" name="minutos" min="1" placeholder="0" required>
+        </div>
+        <button type="submit" class="btn">Guardar sesión</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Sesiones</h2>
+      <ul id="lista-sesiones" class="lista-sesiones"></ul>
+      <p id="vacio" class="vacio">Aún no tienes sesiones registradas.</p>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
