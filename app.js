@@ -10,7 +10,7 @@ const numeroRacha = document.getElementById('numero-racha');
 const numeroMejorRacha = document.getElementById('numero-mejor-racha');
 const minutosSemana = document.getElementById('minutos-semana');
 
-let sesiones = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+let sesiones = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
 function fechaLocalYYYYMMDD(date = new Date()) {
   const y = date.getFullYear();
