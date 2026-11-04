@@ -145,6 +145,23 @@ function lunesDeEstaSemana() {
   return fechaLocalYYYYMMDD(lunes);
 }
 
+
+function calcularDiasEsteMes() {
+  const hoy = new Date();
+  const año = hoy.getFullYear();
+  const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+  const inicioMes = `${año}-${mes}-01`;
+
+  // Obtener último día del mes
+  const ultimoDia = new Date(año, mes - 1, 0).getDate();
+  const finMes = `${año}-${mes}-${String(ultimoDia).padStart(2, "0")}`;
+
+  // Filtrar sesiones del mes actual y obtener días únicos
+  const sesionesMes = sesiones.filter(s => s.fecha >= inicioMes && s.fecha <= finMes);
+  const diasUnicos = [...new Set(sesionesMes.map(s => s.fecha))];
+
+  return diasUnicos.length;
+}
 function calcularMinutosEstaSemana() {
   const hoy = fechaLocalYYYYMMDD();
   const desde = lunesDeEstaSemana();
@@ -174,6 +191,8 @@ function formatearFechaDiaSemana(fechaStr) {
 function renderRacha() {
   const racha = calcularRacha();
   numeroRacha.textContent = racha === 1 ? '1 día' : `${racha} días`;
+  const diasMes = calcularDiasEsteMes();
+  numeroDiasMes.textContent = diasMes === 1 ? "1 día" : `${diasMes} días`;
   renderMejorRacha();
   renderMinutosSemana();
 }
