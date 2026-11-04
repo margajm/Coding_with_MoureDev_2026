@@ -255,3 +255,53 @@ function renderRacha() {
 }
 
 function ren
+
+function inicializarFecha() {
+  inputFecha.value = fechaLocalYYYYMMDD();
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const fecha = inputFecha.value;
+  const tema = inputTema.value.trim();
+  const minutos = parseInt(inputMinutos.value, 10);
+
+  if (!fecha) {
+    alert('Selecciona una fecha.');
+    return;
+  }
+
+  if (!tema) {
+    alert('El tema es obligatorio.');
+    inputTema.focus();
+    return;
+  }
+
+  if (!minutos || minutos <= 0) {
+    alert('Los minutos deben ser un número mayor que 0.');
+    inputMinutos.focus();
+    return;
+  }
+
+  const sesion = {
+    id: Date.now(),
+    fecha,
+    tema,
+    minutos
+  };
+
+  sesiones.push(sesion);
+  guardar();
+
+  renderRacha();
+  renderLista();
+
+  form.reset();
+  inicializarFecha();
+  inputTema.focus();
+});
+
+inicializarFecha();
+renderRacha();
+renderLista();
