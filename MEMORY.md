@@ -25,6 +25,7 @@ Memoria del proyecto entre sesiones. Máximo ~50 líneas: resume o elimina lo qu
 - No usar `toISOString()` ni `new Date("AAAA-MM-DD")`: se interpretan en UTC y desplazan el día.
 - No guardar la mejor racha por separado en localStorage (quedaría huérfana al editar/borrar sesiones).
 - No reescribir `app.js` entero; hacer cambios pequeños y enfocados.
+- Cuidado con el operador || en JavaScript: JSON.parse(x) || [] falla si x es null porque JSON.parse(null) lanza error antes de evaluar ||. Siempre paréntesis: JSON.parse(x || '[]').
 
 ## Próximos pasos
 - (vacío por ahora)
